@@ -1,0 +1,44 @@
+*, *::after, *::before {
+    padding: 0px;
+    margin: 0px
+}
+
+html {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    padding: inherit;
+    margin: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+h2 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 4rem;
+}
+
+h4 {
+    font-size: 3rem;
+}
+
+h5 {
+    font-size: 2cqmin;
+}
+
+h6 {
+    font-size: 1rem;
+}
