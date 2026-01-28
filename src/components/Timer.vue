@@ -6,6 +6,10 @@
     background: green;
     height: 80px;
     width: 160px;
+    border-radius: 10px;
+    font-size: 5rem;
+    background-color: var(--black);
+    color: var(--number-color);
 }
 </style>
 
@@ -16,7 +20,7 @@
 <template>
     <div class="timer">
         <span class="time">
-            00:01
+            10:00
         </span>
     </div>
 </template>
