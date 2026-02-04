@@ -59,8 +59,7 @@ export default {
           ['wP', 'wP', 'wP', 'wP', 'wP', 'wP', 'wP', 'wP'],
           ['wR', 'wN', 'wB', 'wQ', 'wK', 'wB', 'wN', 'wR']
         ],
-      selectedPiece: null,
-      selectedTarget: {
+      selectedPiece: {
         row: null,
         col: null
       }
@@ -76,26 +75,32 @@ export default {
       ).href;
     },
 
-    setSelectedPiece(piece) {
-      this.selectedPiece = piece;
+    
+    setSelectedPiece(rowIndex, colIndex) {
+      this.selectedPiece.row = rowIndex;
+      this.selectedPiece.col = colIndex;
     },
 
     // Se selecionar um lugar vazio, reseta qualquer peça selecionada.
     onClickSquare(rowIndex, columnIndex) {
-      if (rowIndex == null || columnIndex == null) {
+      const piece = this.board[rowIndex][columnIndex];
+      
+      if (!piece) {
         this.resetSelectedTarget();
+      } else {
+        this.setSelectedPiece(rowIndex, columnIndex);
       }
     },
 
+    // OK
     resetSelectedTarget() {
-      {
-        this.selectedPiece.piece = null;
-      }
+      this.selectedPiece.row = null;
+      this.selectedPiece.col = null;
     },
 
-    // Muda a cor quando uma peça é selecionada
-    isPieceSelected(piece) {
-      return this.selectedPiece === piece;
+    // Verifica se uma peça na posição está selecionada
+    isPieceSelected(rowIndex, colIndex) {
+      return this.selectedPiece.row === rowIndex && this.selectedPiece.col === colIndex;
     }
   },
 
@@ -118,8 +123,8 @@ export default {
 
         <img v-if="piece" :src="getPieceImage(piece)
           // piece.getImagePath() <-- Retornar do objeto posteriormente
-          " class="piece" :class="isPieceSelected(piece) ? 'selected-color' : ''"
-          @click="setSelectedPiece(piece)" />
+          " class="piece" :class="isPieceSelected(rowIndex, colIndex) ? 'selected-color' : ''"
+          @click.stop="setSelectedPiece(rowIndex, colIndex)" />
       </span>
     </span>
   </div>
